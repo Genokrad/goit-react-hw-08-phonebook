@@ -1,0 +1,25 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { change } from '../../redux/contacts/slice';
+
+const SearchInput = () => {
+  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+
+  const handleChange = evt => dispatch(change(evt.target.value));
+
+  return (
+    <div>
+      <p className="inputTitle">Filter by name:</p>
+      <input
+        className="inputTag"
+        type="text"
+        name="filter"
+        title="Please enter the name"
+        onChange={handleChange}
+        value={filter}
+      />
+    </div>
+  );
+};
+
+export default SearchInput;
